@@ -41,21 +41,20 @@ Route::middleware(['auth'])->group(function() {
     // Route::get('dashboard/checkout/invoice/{checkout}', [CheckoutController::class, 'invoice'])->name('user.checkout.invoice');
 
     // user dashboard
-    Route::prefix('user/dashboard')->namespace('User')->name('user.')->middleware('ensureUserRole:user')->group(function() {
+    Route::prefix('user/dashboard')->namespace('User')->name('user.')->middleware('ensureUserRole')->group(function() {
         Route::get('/', [UserDashboard::class, 'index'])->name('dashboard');
     });
 
     // admin dashboard
-    Route::prefix('admin/dashboard')->namespace('Admin')->name('admin.')->middleware('ensureUserRole:admin')->group(function() {
-        Route::get('/', [AdminDashboard::class, 'index'])->name('dashboard');
+    Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware(['can:role, "super-admin", "admin"'])->group(function() {
+        Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard')->middleware('can:role, "super-admin", "admin"');
+        Route::get('/transactions', [AdminDashboard::class, 'transactions'])->name('transactions')->middleware('can:role, "super-admin", "admin"');
+        Route::get('/users', [AdminDashboard::class, 'users'])->name('users')->middleware('can:role, "super-admin"');
 
         // admin checkout
-        Route::post('checkout/{checkout}', [AdminCheckout::class, 'update'])->name('checkout.update');
+        Route::post('checkout/{checkout}', [AdminCheckout::class, 'update'])->name('checkout.update')->middleware('can:role, "super-admin", "admin"');
     });
-});
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
+});
 
 require __DIR__.'/auth.php';
