@@ -1,57 +1,74 @@
+@extends('components.sidebar')
 @extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-8 offset-2">
-            <div class="card">
-                <div class="card-header">
-                    My Camps
-                </div>
-                <div class="card-body">
-                    @include('components.alert')
-                    <table class="table">
-                        <thead>
-                            <th>User</th>
-                            <th>Camp</th>
-                            <th>Price</th>
-                            <th>Register Data</th>
-                            <th>Paid Status</th>
-                            <th>Action</th>
-                        </thead>
-                        <tbody>
-                            @forelse ($checkouts as $checkout)
-                                <tr>
-                                    <td>{{ $checkout->User->name }}</td>
-                                    <td>{{ $checkout->Camp->title }}</td>
-                                    <td>{{ $checkout->Camp->price }}k</td>
-                                    <td>{{ $checkout->created_at->format('M d Y') }}</td>
-                                    <td>
-                                        @if ($checkout->is_paid)
-                                            <span class="badge bg-success">Paid</span>
-                                        @else
-                                            <span class="badge bg-warning">Waiting</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if (!$checkout->is_paid)
-                                            <form action="{{ route('admin.checkout.update', $checkout->id) }}" method="post">
-                                                @csrf
-                                                <button class="btn btn-primary btn-sm">Set to Paid</button>
-                                            </form>
-                                        @endif
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="3">No camps registered</td>
-                                </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+
+
+@section('sidebar')
+
+<section class="wow fadeIn animated" style="visibility: visible; animation-name: fadeIn" >
+    <div class="container">
+      <div class="row">
+
+        <div
+          class="col-md-3 col-sm-6 bottom-margin-small text-center counter-section wow fadeInUp xs-margin-bottom-ten animated"
+          data-wow-duration="900ms"
+          style="
+            visibility: visible;
+            animation-duration: 900ms;
+            animation-name: fadeInUp;
+          "
+        >
+          <i class="fa fa-anchor medium-icon"></i>
+          <span
+            class="timer counter alt-font appear"
+            data-to="810"
+            data-speed="7000"
+            >{{$countCheckout}}</span
+          >
+          <span class="counter-title">Bootcamp Ordered</span>
         </div>
+
+        <div
+          class="col-md-3 col-sm-6 text-center counter-section wow fadeInUp animated"
+          data-wow-duration="1200ms"
+          style="
+            visibility: visible;
+            animation-duration: 1200ms;
+            animation-name: fadeInUp;
+          "
+        >
+          <i class="fa fa-users medium-icon"></i>
+          <span
+            class="timer counter alt-font appear"
+            data-to="600"
+            data-speed="7000"
+            >{{$countUser}}</span
+          >
+          <span class="counter-title">Users</span>
+        </div>
+
+        <div
+          class="col-md-3 col-sm-6 text-center counter-section wow fadeInUp animated"
+          data-wow-duration="1200ms"
+          style="
+            visibility: visible;
+            animation-duration: 1200ms;
+            animation-name: fadeInUp;
+          "
+        >
+          <i class="fa fa-user medium-icon"></i>
+          <span
+            class="timer counter alt-font appear"
+            data-to="600"
+            data-speed="7000"
+            >{{$countAdmin}}</span
+          >
+          <span class="counter-title">Admin</span>
+        </div>
+
+      </div>
     </div>
-</div>
+  </section>
 @endsection
+
+
