@@ -195,7 +195,7 @@
                                 GILA BELAJAR
                             </p>
                             <h1 class="price text-center">
-                                $280K
+                                $200K
                             </h1>
                             <div class="item-benefit-pricing mb-4">
                                 <img src="{{ asset('images/ic_check.svg') }}" alt="">
@@ -240,7 +240,7 @@
                             <div class="item-benefit-pricing mb-4">
                                 <img src="{{ asset('images/ic_check.svg') }}" alt="">
                                 <p>
-                                    Future Job Opportinity
+                                    Preparation CV & Resume
                                 </p>
                                 <div class="clear"></div>
                                 <div class="divider"></div>
@@ -248,7 +248,7 @@
                             <div class="item-benefit-pricing mb-4">
                                 <img src="{{ asset('images/ic_check.svg') }}" alt="">
                                 <p>
-                                    Premium Design Kit
+                                    Interview Practice
                                 </p>
                                 <div class="clear"></div>
                                 <div class="divider"></div>
@@ -256,7 +256,7 @@
                             <div class="item-benefit-pricing">
                                 <img src="{{ asset('images/ic_check.svg') }}" alt="">
                                 <p>
-                                    Website Builder
+                                    Future Job Opportinity
                                 </p>
                                 <div class="clear"></div>
                             </div>

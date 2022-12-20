@@ -37,15 +37,15 @@ class CampBenefitTableSeeder extends Seeder
             ],
             [
                 'camp_id' => 1,
+                'name' => 'Preparation CV & Resume'
+            ],
+            [
+                'camp_id' => 1,
+                'name' => 'Interview Practice'
+            ],
+            [
+                'camp_id' => 1,
                 'name' => 'Future Job Opportinity'
-            ],
-            [
-                'camp_id' => 1,
-                'name' => 'Premium Design Kit'
-            ],
-            [
-                'camp_id' => 1,
-                'name' => 'Website Builder'
             ],
             [
                 'camp_id' => 2,
