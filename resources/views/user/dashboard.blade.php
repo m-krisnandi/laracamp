@@ -40,7 +40,7 @@
                             @if ($checkout->payment_status == 'waiting')
                                 <a href="{{$checkout->midtrans_url}}" class="btn btn-primary">Pay Here</a>
                             @elseif ($checkout->payment_status == 'paid')
-                                <a href="/" class="btn btn-primary">View Camp</a>
+                                <a href="{{route('user.course')}}" class="btn btn-primary">View Camp</a>
                             @endif
                         </td>
                         <td>

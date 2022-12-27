@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\DashboardController as UserDashboard;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\CheckoutController as AdminCheckout;
+use App\Http\Controllers\User\CourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,8 +46,9 @@ Route::middleware(['auth'])->group(function() {
     // Route::get('dashboard/checkout/invoice/{checkout}', [CheckoutController::class, 'invoice'])->name('user.checkout.invoice');
 
     // user dashboard
-    Route::prefix('user/dashboard')->namespace('User')->name('user.')->middleware('ensureUserRole')->group(function() {
-        Route::get('/', [UserDashboard::class, 'index'])->name('dashboard');
+    Route::prefix('user')->namespace('User')->name('user.')->middleware('ensureUserRole')->group(function() {
+        Route::get('/dashboard', [UserDashboard::class, 'index'])->name('dashboard');
+        Route::get('/course', [CourseController::class, 'index'])->name('course');
     });
 
     // admin dashboard
