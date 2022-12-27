@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\Checkout\Store;
 use App\Mail\Checkout\AfterCheckout;
+use App\Mail\Checkout\Paid;
 use App\Models\Camp;
 use App\Models\Checkout;
 use Exception;
@@ -246,6 +247,12 @@ class CheckoutController extends Controller
         }
 
         $checkout->save();
+
+        if($checkout->payment_status == 'paid') {
+            // send email to user
+            Mail::to($checkout->User->email)->send(new Paid($checkout));
+        }
+
         return view('checkout/success');
     }
 }
